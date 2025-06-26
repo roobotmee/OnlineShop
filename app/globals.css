@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 83% 58%;
+    --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    /* Dark theme using the provided color palette */
+    --background: 215 28% 17%; /* Deep navy blue background */
+    --foreground: 210 40% 98%; /* Very light text */
+    --card: 215 25% 20%; /* Slightly lighter navy for cards */
+    --card-foreground: 210 40% 98%;
+    --popover: 215 25% 20%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%; /* Bright blue accent */
+    --primary-foreground: 215 28% 17%;
+    --secondary: 215 20% 25%; /* Medium dark blue-gray */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 20% 25%;
+    --muted-foreground: 215 15% 65%; /* Lighter blue-gray for muted text */
+    --accent: 215 20% 25%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 20% 30%; /* Subtle border color */
+    --input: 215 25% 20%;
+    --ring: 217 91% 60%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 195 85% 55%;
+    --chart-3: 173 80% 50%;
+    --chart-4: 151 75% 45%;
+    --chart-5: 129 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Enhanced scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/70;
+}
+
+/* Dark theme specific scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(217 91% 60% / 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(217 91% 60% / 0.7);
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced gradient backgrounds using palette colors */
+.gradient-bg {
+  background: linear-gradient(135deg, rgb(147, 51, 234) 0%, rgb(79, 70, 229) 100%);
+}
+
+.gradient-bg-light {
+  background: linear-gradient(135deg, rgb(196, 181, 253) 0%, rgb(165, 180, 252) 100%);
+}
+
+/* Dark theme gradients using palette colors */
+.dark .gradient-bg {
+  background: linear-gradient(135deg, hsl(215 28% 17%) 0%, hsl(215 25% 20%) 50%, hsl(215 20% 25%) 100%);
+}
+
+.dark .gradient-bg-light {
+  background: linear-gradient(135deg, hsl(215 25% 20%) 0%, hsl(215 20% 25%) 100%);
+}
+
+/* Glass effect with palette colors */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-effect {
+  backdrop-filter: blur(12px);
+  background: hsl(215 25% 20% / 0.8);
+  border: 1px solid hsl(215 20% 30% / 0.5);
+  box-shadow: 0 8px 32px hsl(215 28% 17% / 0.5);
+}
+
+/* Enhanced button styles for dark theme */
+.dark .bg-gradient-to-r.from-purple-600.to-blue-600 {
+  background: linear-gradient(to right, hsl(217 91% 60%), hsl(195 85% 55%));
+  box-shadow: 0 4px 15px hsl(217 91% 60% / 0.3);
+}
+
+.dark .hover\:from-purple-700.hover\:to-blue-700:hover {
+  background: linear-gradient(to right, hsl(217 91% 55%), hsl(195 85% 50%));
+  box-shadow: 0 6px 20px hsl(217 91% 60% / 0.4);
+}
+
+.dark .bg-gradient-to-r.from-green-500.to-emerald-500 {
+  background: linear-gradient(to right, hsl(151 75% 45%), hsl(173 80% 50%));
+  box-shadow: 0 4px 15px hsl(151 75% 45% / 0.3);
+}
+
+.dark .hover\:from-green-600.hover\:to-emerald-600:hover {
+  background: linear-gradient(to right, hsl(151 75% 40%), hsl(173 80% 45%));
+  box-shadow: 0 6px 20px hsl(151 75% 45% / 0.4);
+}
+
+/* Enhanced borders for dark theme */
+.dark .border-purple-500\/20 {
+  border-color: hsl(217 91% 60% / 0.2);
+}
+
+.dark .hover\:border-purple-500\/40:hover {
+  border-color: hsl(217 91% 60% / 0.4);
+}
+
+.dark .focus\:border-purple-500:focus {
+  border-color: hsl(217 91% 60%);
+  box-shadow: 0 0 0 3px hsl(217 91% 60% / 0.1);
+}
+
+/* Enhanced card styles for dark theme */
+.dark .bg-card {
+  background-color: hsl(215 25% 20%);
+  border: 1px solid hsl(215 20% 30% / 0.3);
+  box-shadow: 0 4px 6px hsl(215 28% 17% / 0.1);
+}
+
+.dark .hover\:bg-card:hover {
+  background-color: hsl(215 25% 22%);
+  border-color: hsl(215 20% 30% / 0.5);
+}
+
+/* Enhanced text colors for better contrast */
+.dark .text-primary {
+  color: hsl(217 91% 60%);
+}
+
+.dark .text-muted-foreground {
+  color: hsl(215 15% 65%);
+}
+
+.dark .text-foreground {
+  color: hsl(210 40% 98%);
+}
+
+/* Enhanced shadows for dark theme */
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px hsl(215 28% 17% / 0.3), 0 4px 6px -2px hsl(215 28% 17% / 0.1);
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px hsl(215 28% 17% / 0.5);
+}
+
+/* Neon glow effect for dark theme */
+.dark .neon-glow {
+  box-shadow: 0 0 20px hsl(217 91% 60% / 0.3), 0 0 40px hsl(217 91% 60% / 0.1);
+}
+
+/* Enhanced muted backgrounds */
+.dark .bg-muted\/30 {
+  background-color: hsl(215 20% 25% / 0.3);
+}
+
+.dark .bg-muted\/50 {
+  background-color: hsl(215 20% 25% / 0.5);
+}
+
+/* Table and list enhancements */
+.dark .hover\:bg-muted\/30:hover {
+  background-color: hsl(215 20% 25% / 0.3);
+}
+
+/* Input and form enhancements */
+.dark .bg-background {
+  background-color: hsl(215 28% 17%);
+}
+
+.dark .bg-slate-700 {
+  background-color: hsl(215 25% 20%);
+}
+
+.dark .bg-slate-800 {
+  background-color: hsl(215 28% 17%);
+}
+
+.dark .border-slate-600 {
+  border-color: hsl(215 20% 30%);
+}
+
+.dark .border-slate-700 {
+  border-color: hsl(215 20% 25%);
+}
+
+.dark .text-slate-300 {
+  color: hsl(215 15% 75%);
+}
+
+.dark .text-slate-400 {
+  color: hsl(215 15% 65%);
+}
+
+/* Badge and accent colors */
+.dark .bg-teal-600 {
+  background-color: hsl(173 80% 50%);
+}
+
+.dark .hover\:bg-teal-700:hover {
+  background-color: hsl(173 80% 45%);
+}
+
+/* Focus states */
+.dark .focus-visible\:ring-2:focus-visible {
+  box-shadow: 0 0 0 2px hsl(217 91% 60% / 0.5);
+}
+
+/* Selection styles */
+.dark ::selection {
+  background-color: hsl(217 91% 60% / 0.3);
+  color: hsl(210 40% 98%);
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.dark .animate-pulse {
+  background: linear-gradient(90deg, hsl(215 25% 20%) 25%, hsl(215 20% 25%) 50%, hsl(215 25% 20%) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Enhanced hover states */
+.dark .transition-colors {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Backdrop blur enhancements */
+.dark .backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  background-color: hsl(215 28% 17% / 0.8);
+}
+
+/* Enhanced spacing and layout */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive {
+    font-size: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+  }
+}
