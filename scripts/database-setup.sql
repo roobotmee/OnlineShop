@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS google_sheets (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nom TEXT NOT NULL,
+  link TEXT NOT NULL,
+  sheet_id TEXT NOT NULL,
+  varoqlar TEXT NOT NULL,
+  yaratilgan_vaqt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS sahifalar (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nom TEXT NOT NULL,
+  link TEXT UNIQUE NOT NULL,
+  sheet_id INTEGER NOT NULL,
+  varoq_nomi TEXT NOT NULL,
+  yaratilgan_vaqt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (sheet_id) REFERENCES google_sheets (id)
+);
+
+CREATE TABLE IF NOT EXISTS yuborilgan_malumotlar (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  sahifa_id INTEGER NOT NULL,
+  ism TEXT NOT NULL,
+  telefon TEXT NOT NULL,
+  yuborilgan_vaqt DATETIME NOT NULL,
+  FOREIGN KEY (sahifa_id) REFERENCES sahifalar (id)
+);
